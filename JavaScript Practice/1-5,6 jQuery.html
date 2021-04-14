@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel='stylesheet' href="alert%20box.css">
+</head>
+<body>
+    
+    
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    
+    <h4 id ='test'>안녕하세요</h4>
+    <p class = 'greeting'>안녕하쇼</p>
+    <p class = 'greeting'>안늉하슈</p>
+    <p class = 'greeting'>안뇽하슈</p>
+    
+    <button class='btn'>버튼btn</button>
+    <button class='btn'>버튼btn</button>
+    
+    <script>
+    
+    $('#test').html('안녕');
+    $('#test').css('color','red');
+    //$('#test').addClass('yellow-bg');
+    //이 $ 표시가 document get element byid 같은 의미 css 셀렉터같이 작성하면된다.
+        
+    // id값 찾으려면 # class값 찾으려면 . 을 이용한다.
+        //+ html은 innerhtml과 비슷한 기능
+        // text는 안의 모든 글자, html은 안의 모든 html을 변경해준다.
+        // 출력만해보고 싶으면 그냥 $('')만 쓰면된다.
+        // .css로 스타일 변경 가능
+        // 속성도 변경가능 $('').attr('src','dsddd')
+        
+        
+//        세개를 한번에 바꿔주는 것도 j 쿼리로 가능하다
+        
+//        document.getElementsByClassName('geeting')[0].innerHTML = '안녕';
+//        이것처럼 한개씩밖에 인덱싱으로 선택해서 바꿔줄수밖에 없다.
+        $('.greeting').eq(0).html('안녕');
+//        이렇게 순서 정해줄수 있다.
+//        $('.btn').on('click', function(){
+//            띄어주셈~~
+//        })
+//        eventlister도 한번에 분배해줄 수 있다. 문법은 on, 특징은 안에 selecter하나 더 작성가능
+        $('.btn').on('click',function(){
+            $('.greeting').slideUp();
+        });
+//        jQuery는 애니메이션 ui도 쉽게 만듨수있다. (여기선 버튼 누르면 안녕이 사라지는 기능)
+//        hide()가 display none과 같고 반대는 show()
+//        ++ slideup같은 것도 있다
+    </script>
+    
+</body>
+
+
+
+
+
+</html>
