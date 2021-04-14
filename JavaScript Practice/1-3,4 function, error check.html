@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+<!--     css 파일 연결하기-->
+    <link rel='stylesheet' href='alert%20box.css'>
+</head>
+<body>
+    
+    <div class='alert-box' id='alert'> Alert 박스 
+        <button onclick = "name22('none')">닫기</button>
+<!--    # 버튼 누르면 Alert 박스 등장-->
+<!--        #방식 : 미리 디자인 해놓고 숨김-->
+<!--            # css 파일 만들고 연결해놓고 class 쪽에 커서 놓고 ctrl +e 누르면 바로 연결 작성 가능-->
+<!--        #    : 버튼을 누르거나 하면 보여줌-->
+    </div>
+            <button onclick ="name22('block')">버튼</button>
+<!--        onclick은 이 버튼을 누르면 이 자바스크립트를 실행해주세요 하는 뜻이다-->
+    
+    
+    <script>
+        
+        function name22(구멍){
+//        긴 코드를 한단어로 축약가능
+            document.getElementById('alert').style.display = 구멍;
+        }
+        
+        
+    </script>
+    
+    
+</body>
+
+
+
+
+<!-- 핵심은 display를 none 해놨다가 onclick을 이용해 BLOCK으로 보여주는 것이다.-->
+</html>
