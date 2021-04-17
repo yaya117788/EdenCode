@@ -1,0 +1,106 @@
+<!--Bootstrap은 프론트엔드 라이브러리를 모아놓은 것이다. 구글을 통해 검색후 starter template를 복사해왔다. html을 그대로 복붙해가면서 개발이 가능하다.-->
+
+<!--사이트 대문(jumbotron), 등을 bootstrap에서 검색해 코드 그래도 사용가능-->
+
+<!--우리는 버튼을 예시로 가져온 후 우리의 css를 연결하기 위해 bootstrap css 밑에 link로 연결-->
+
+<!--어떤것이든 만들어놓고 숨겨놨다 보여주는 것이 핵심!! toggle은 down/up을 한번에 해주는 함수-->
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+<!--      Boot스트랩은 JQuery의 미니버전 URL이 있어서 일반 버전으로 URL 수정-->
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <link href="alert%20box.css" rel ='stylesheet'>
+    <title>Hello, world!</title>
+  </head>
+  <body>
+      
+      <div class = "black-background">
+        <div class = "white-background">
+          <p>로그인하세요</p>
+<!--            이 아래 form은 강사님이 부트스랩에서 붙여온듯?-->
+<!--            원래 전송 버튼의 submit을 누르면 새로고침되지만 안되면 form 뒤에 action = "login.php" 추가 필요-->
+            <form>
+                <div class="form-group">
+                    <input type="email" class="form-control" placeholder="Email" id="email">
+                    <p class = 'idnull'>ID를 입력해주세요</p>
+                </div>
+                <div class="form-group">
+                    <input type="password" class="form-control" placeholder="Password" id = "password">
+                    <p class = "pwnull">Password를 입력해주세요</p>
+                </div>
+                <button type="submit" class="btn btn-primary">전송</button>
+                <button class="btn btn-danger" id = "close">Close</button>
+            </form>
+
+<!--            btn-danger class 같은것은 아마 부트스트랩에서 이미 css style이 되어있는것인듯-->
+          </div>
+      
+      </div>
+<!--      여기서부터 메뉴바 만들어보기 실습 -->
+      <div class = "nav-menu">
+        <h4 style = "margin: 0">Shirts Studio</h4>
+        <a class = "button2">Products</a>
+      </div>
+      
+      <ul class="list-group">
+        <li class = "list-group-item">Outer</li>
+        <li class = "list-group-item">Innerwear</li>
+        <li class = "list-group-item">Shirts</li>
+      </ul>
+      
+   <div class="jumbotron main-background">
+    <h1 class="display-4">Shirts Studio!</h1>
+    <p class="lead">This is a simple hero unit, a simple jumbotron-style component for  calling extra attention to featured content or information.</p>
+    <hr class="my-4">
+    <p>It uses utility classes for typography and spacing to space content out within   the larger container.</p>
+    <a id = "login" class="btn btn-primary btn-lg" href="#" role="button">Log in</a>
+      </div>  
+      
+    <script>
+        
+        $('form').on('submit',function(e){
+//            val 값이 ''과 NaN은 다르다 여기선 ''로 해야 성립
+//            eventlister 추가 ++ 1.change input안의 값이 변하고 다른곳 클릭시(focus 잃을때) 아래 코드를 실행,
+//                2. on('input')은 어떤것이 변하기만 하면 아래코드 실행
+            if($('#email').val() == ''){
+               e.preventDefault();
+                $('.idnull').show();
+               } else {
+                   $('.idnull').hide();
+               };
+            if($('#password').val() == ''){
+                $('.pwnull').show();
+            };
+//                     안의 값이 없으면 어떤 요청을 막는 함수다(submit을 e.prevent~~로 막음)
+        })
+        $('#login').on('click',function(){
+            $('.black-background').fadeIn();
+        });
+        $('#close').on('click',function(){
+            $('.black-background').fadeOut();
+        });
+//        on('click') 혹은 .click으로 표현도 가능
+        $('.button2').click(function(){
+            $('.list-group').slideToggle();
+        })
+      </script>
+    <!-- Optional JavaScript; choose one of the two! -->
+
+    <!-- Option 1: jQuery and Bootstrap Bundle (includes Popper) -->
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
+
+    <!-- Option 2: Separate Popper and Bootstrap JS -->
+    <!--
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF" crossorigin="anonymous"></script>
+    -->
+  </body>
+</html>
