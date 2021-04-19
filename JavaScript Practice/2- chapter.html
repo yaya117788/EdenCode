@@ -1,0 +1,303 @@
+<!--
+애니메이션 유의할것 
+1. margin, height, width,position 등을 쓰면 느려진다. > transform을 써야 좋다.
+-->
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+<!--      Boot스트랩은 JQuery의 미니버전 URL이 있어서 일반 버전으로 URL 수정-->
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <link href="alert%20box.css" rel ='stylesheet'>
+    <title>Hello, world!</title>
+  </head>
+  <body>
+      
+      <div class = "black-background">
+<!--          뒤에 띄어쓰기 후 class 만들어서 css를 script에서 addclass로 간략화 가능-->
+          
+<!--
+          2-FINAL 개념 
+          이벤트 버블링 : 이벤트가 상위요소로 퍼지는 현상 ex> id창을 클릭하면 하위부터 상위 요소가 다 눌러짐 (각 클래스 or id)
+          검은배경 누르면 모달창이 닫히는 기능을 만들어본다  > 밑에 스크립트에 작성
+-->
+        <div class = "white-background">
+          <p>로그인하세요</p>
+            <form>
+                <div class="form-group">
+                    <input type="email" class="form-control" placeholder="Email" id="email">
+                    <p class = 'idnull'>ID를 입력해주세요</p>
+                </div>
+                <div class="form-group">
+                    <input type="password" class="form-control" placeholder="Password" id = "password">
+                    <p class = "pwnull">Password를 입력해주세요</p>
+                </div>
+                <button type="submit" class="btn btn-primary">전송</button>
+                <button class="btn btn-danger" id = "close">Close</button>
+            </form>
+
+          </div>
+      
+      </div>
+      
+      <div class = "nav-menu">
+        <h4 style = 'margin : 0' class = 'large-logo'>Shirts Studio</h4>
+        <a class = "button2">Products</a>
+      </div>
+            <div id = 'left-menu'>
+        <p>Menu Title</p>
+        <button type = 'button' class = 'btn btn-outline-light', id='closemenu'>Close Menu</button>
+      </div>
+      
+      <ul class="list-group">
+        <li class = "list-group-item">Outer</li>
+        <li class = "list-group-item">Innerwear</li>
+        <li class = "list-group-item">Shirts</li>
+      </ul>
+      
+   <div class="jumbotron main-background">
+    <h1 class="display-4">Shirts Studio!</h1>
+    <p class="lead">This is a simple hero unit, a simple jumbotron-style component for  calling extra attention to featured content or information.</p>
+    <hr class="my-4">
+    <p>It uses utility classes for typography and spacing to space content out within   the larger container.</p>
+    <a id = "login" class="btn btn-primary btn-lg" href="#" role="button">Log in</a>
+    <a id = "show-menu" class="btn btn-danger btn-lg" href="#" role="button">Show Menu</a> 
+<!--       btn danger로 하면 버튼이 빨간색으로 변경-->
+      </div>  
+      
+      <h4 class='my-4 text-center'>Memorable Place For me</h4>
+      <div style='overflow: hidden; position : relative'>
+<!--          넘치는 애들을 스크롤말고 숨겨달라는 style-->
+      <div class='slide-container'>
+<!--      이미지 슬라이드 직접 만들어보기 (누르면 다음슬라이드로 넘어가는 것)-->
+<!--          이것은 이미지가 가로로 쭉 배치되어있다가 버튼누르면 넘어가게 해야한다.-->
+          <div class='slide-box'>
+            <img src='oxford.jpg'>
+          </div>
+          <div class='slide-box'>
+            <img src='la.jpg'>
+          </div>
+          <div class='slide-box'>
+            <img src = 'matterhorn.jpg'>
+          </div>
+      </div>
+        <button type = 'button' class = 'slide-before btn btn-light'>Before</button>
+        <button type = 'button' class = 'slide-next btn btn-light'>Next</button>
+      </div>
+      <button class = 'slide-1'>1</button>
+      <button class = 'slide-2'>2</button>
+      <button class = 'slide-3'>3</button>
+      <div class='my-5'></div>
+      
+<!--      탭기능 만들기 -->
+      <style>
+      ul.list {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        border-bottom: 1px solid #ccc;
+      }
+      ul.list::after {
+        content: '';
+        display: block;
+        clear: both;
+      }
+      .tab-button {
+        display: block;
+        padding: 10px 20px 10px 20px;
+        float: left;
+        margin-right: -1px;
+        margin-bottom: -1px;
+        color: grey;
+        text-decoration: none;
+        cursor: pointer;
+      }
+/*          주황색 테투리를 해주는 css active*/
+      .active {
+        border-top: 2px solid orange;
+        border-right: 1px solid #ccc;
+        border-bottom: 1px solid white;
+        border-left: 1px solid #ccc;
+        color: black;
+        margin-top: -2px;
+      }
+      .tab-content {
+        display: none;
+        padding: 10px;
+      }
+      .show {
+        display: block;
+      }
+    </style>
+
+
+    <div class="container mt-5">
+        <ul class="list">
+            <li class="tab-button">Products</li>
+            <li class="tab-button active">Information</li>
+            <li class="tab-button">Shipping</li>
+        </ul>
+
+        <div class="tab-content">
+            <p>상품설명입니다. Product</p>
+        </div>
+        <div class="tab-content show">
+<!--            show를 부착하면 보인다. 위에 스타일에 해놓음-->
+            <p>상품정보입니다. Info</p>
+        </div>
+        <div class="tab-content">
+            <p>배송정보입니다. Shipping</p>
+        </div>
+    </div>
+    <script src='java%20%EC%B2%A8%EB%B6%80.js'></script>
+      
+    <script>
+//        이벤트 버블링 부분 배경누르면 모달창 닫히는 기능 구현
+        $('.black-background').click(function(e){
+            
+//           $('.black-background').hide(); 
+//            but 이렇게 할시 어딜누르던 닫힌다. > email 쳐야할때도 닫힘 > 이벤트 버블링으로 인해 이렇다.
+//            만약에 지금 실제로 클릭한게 검은배경일때만 닫는다를 구현
+            if (e.target == e.currentTarget) {
+//                == $('.black-background')로 하면 안되는 이유는 e.target은 쌩 js 문법으로 한거고 $는 j쿼리로 출력한 것이기 때문에 값이 다르다. 주의!!!! $(this)의 쌩 js버전인 this써도가능
+                $('.black-background').removeClass('slide-down');
+                }
+//                ++ e.target; 지금 실제 클릭한 요소 의미, e.currentTarget 지금 이벤트리스너가 달린곳을 의미=(jQuery에서 $(this)랑 같다) e.preventDefault()등이 있다.
+        });
+        
+//        nav 바의 애니메이션 만들기 파트
+//        스크롤바가 내릴때 배경이 흰색으로 바껴야한다. 주의사항 : 스크롤은 많이 쓰지 말아야한다. 메모리가 많이 들어감
+        $(window).on('scroll',function(){
+//            만약 지금 스크롤을 100PX 내렬을때만 실행하게 부드럽게 만드는 코드
+            if($(window).scrollTop() > 100){
+                   //            window는 한 창(페이지)  전체 즉 viewpoint를 의미한다.
+                $('.nav-menu').addClass('dev-black');
+                $('.nav-menu h4').addClass('small-logo');
+               }
+//            nav-menu h4에만 따로 주는거 주의!! ++a는 h와 다르다.
+            if($(window).scrollTop() < 100){
+                $('.nav-menu').removeClass('dev-black');
+                $('.nav-menu h4').removeClass('small-logo');
+            }
+        })
+        
+        
+//        슬라이드 관련 스크립트
+        var 지금보이는사진 = 1;
+        $('.slide-next').click(function(){
+//            만약에 지금 사진 1이 보이면 사진2를 보여주고 사진2면 사진3를 보여주고 사진3면 사진1
+               $('.slide-container').css('transform','translateX(-' + 지금보이는사진 +'00vw)'); 
+            if(지금보이는사진 <2){
+                지금보이는사진 = 지금보이는사진 + 1;
+            }
+        });
+            $('.slide-before').click(function(){
+ //           만약에 지금 사진 1이 보이면 사진2를 보여주고 사진2면 사진3를 보여주고 사진3면 사진1
+               $('.slide-container').css('transform','translateX(-' + (지금보이는사진-1) +'00vw)');
+                if (지금보이는사진 > 1){
+                지금보이는사진 = 지금보이는사진 - 1;                    
+                }
+        });
+        
+        
+        
+        $('.slide-2').click(function(){
+            $('.slide-container').css('transform','translateX(-100vw)');
+        });
+        $('.slide-3').click(function(){
+            $('.slide-container').css('transform','translateX(-200vw)');
+        });
+        $('.slide-1').click(function(){
+            $('.slide-container').css('transform','translateX(0vw)');
+        });
+        
+        
+        var idcheck = $('.idnull');
+        var pwcheck = $('.pwnull');
+        $('form').on('submit',function(e){
+//            if($('#email').val() == ''){
+//               e.preventDefault();
+//                idcheck.show();
+//               } else {
+//                   idcheck.hide();
+//               };
+//            if($('#password').val() == ''){
+//                pwcheck.show();
+//            };
+//        만약 지금 이메일 INPUT이 입력된 값이 정규식과 비교했을대 false인 경우 폼전송 막기 제작
+        if(/\S+@\S+\.\S+/.test($('#email').val()) == false){
+            e.preventDefault();
+            } else if ($('#email').val() == ''){
+                    e.preventDefault();
+                    };
+        var 입력한비밀번호 = $('#password').val();
+        if(/[A-Z]+/.test(입력한비밀번호) == false){
+           e.preventDefault();
+           }
+         });
+        
+//          정규식 관련 정리 
+//        문자를 검사하고 싶을 때 사용 (ex 이메일 형식이 맞는지 or 어떤 글자안에 ab가 들어가는지?)
+//        /abc/ 는 지금 어떤 문자에 abc가 존재하나요 검사하는 식이다.
+//        /abc/.test('absdwdwdw')가 예시다. 연속된 단어가 없어서 아니라고 나온다.
+//        ++ 괄호를 쓸수있어서 그안에 파이썬처럼 표현가능 ex > /[A-z]/ 알파벳 모두 포함 [ㄱ-ㅎ], \S로 특수문자 포함 모든 문자 표현 가능 
+//        모든문자 다음 골뱅이가 오는걸 확인하고 싶다? > /\S@/.test('t@')
+//        근데 이 S는 하나만 의미 여러개를 포함하고 싶으면? > +를 붙인다. /\S+@\S+\./ +점은 \.
+        
+        $('#login').on('click',function(){
+//            $('.black-background').animate({ marginTop : '0px'});
+//            But animate 함수는 느려서 잘 안쓰는  추세이다 css속성을 이용해서 쓴느것이 좋다.
+//            transition을 이용해 스무스하게 만들고 css로 적용
+//            $('.black-background').css('transform','translateY(0px)');
+            $('.black-background').addClass('slide-down');
+            
+            //        JS를 이용하면 사용자의 키입력, 마우스입력 체크부터 세부적으로 CSS와 다른 효과
+//        <로고 누르면 왼쪽에서 메뉴가 나오는 애니메이션 만들어보기>
+//    EX 예시1 >
+//        $('#hi').click(function(){
+//            $('#hi').animate({ marginLeft : '100px',
+//                             marginTop : '100px'}, 2000);
+//        });
+//        클릭하는 순간 magin이 생기면서 이동이되는 애니메이션이 생성된다. 2000은 2000ms로 2초에 걸쳐 애니메이션이 실행되는거
+        });
+        $('#close').on('click',function(){
+            $('.black-background').removeClass('slide-down');
+        });
+//        on('click') 혹은 .click으로 표현도 가능
+        $('.button2').click(function(){
+            $('.list-group').slideToggle();
+        })
+        
+        $('#show-menu').click(function(){
+            $('#left-menu').animate({ marginLeft : '0px'}, 1000);
+        });
+        $('#closemenu').click(function(){
+            $('#left-menu').animate({ marginLeft : '-150px'}, 1000);
+        });
+//        메뉴창 구성 SCRIPT
+        
+        
+        
+        
+//        let은 최신 문법으로 var가 차이가 있는데 let은 재선언이 불가능한 변수를 만들때 사용하면 된다. let age를 한번 만들면 그이후 재선언할 수 없다.++ const는 재선언, 재할당 다 불가능
+        
+//        var 이름 = ""; 순으로 변수를 선언할 수 있다. 
+//            변수는 $(~~) 같이 html을 계속 탐색해야하는 작업을 적게 할당할 수 있다. 셀렉터 저장에 유용하다. 셀렉터 >> $('')~~~
+//            변수는 '선언,할당,범위'만 알면되는데, var ~~ 가 선언, var ~~ = 'dsdsd'; 가 할당,
+//            범위는 함수 안에서는 local 처럼 그 안에서만 되고 전역변수는 밖에서 해야함
+      </script>
+    <!-- Optional JavaScript; choose one of the two! -->
+
+    <!-- Option 1: jQuery and Bootstrap Bundle (includes Popper) -->
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
+
+    <!-- Option 2: Separate Popper and Bootstrap JS -->
+    <!--
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF" 

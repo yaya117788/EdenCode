@@ -1,0 +1,186 @@
+
+.alert-box {
+    background : #9898ed;
+    color : #5151ba;
+    padding : 20px;
+    border-radius: 5px;
+    display: none;
+/*    display를 none으로 해놓으면 안보임 block이 보이게 되는것 > 이후 button 누르면 활성화 같은것 가능*/
+}
+
+.yellow-bg{
+    background : yellow;
+}
+.dropdown-item1 {
+/*    background-image : url();*/
+    background : blue;
+    color : white;
+}
+
+.black-background {
+    background : rgba(0,0,0,0.5);
+    position :fixed;
+    z-index : 5; 
+    width : 100%;
+    height : 100%;
+/*    부트스트랩이 index를 4까지 사용하고 있기 때문에 맨앞에뜨기위해서 5로 설정*/
+    transition : all 1s;
+/*    이것은 css 속성이 script로 인해 변경될때 1초에 걸쳐 서서히 변경되게 만든다. 그래야 애니메이션이 이쁨*/
+    transform : translateY(-1000px);
+/*    translate~ 와 rotate와 scale로 회전도 가능하고 scale등 여러가지가 가능하다.*/
+}
+
+.white-background {
+    background : white;
+    width : 80%;
+    margin : 100px auto;
+    padding : 20px;
+    border-radius: 10px;
+}
+
+#blackback {
+    background : black;
+    position : fixed;
+    width : 100%;
+    height : 100%;
+    z-index : 1;
+    display : none;
+}
+
+#whiteback {
+    background : white ;
+    width : 60%;
+    margin : 100px auto;
+    padding : 20px;
+    border-radius: 10px;  
+    z-index: 2;
+}
+
+#email-alert {
+    display : none;
+}
+
+.main-background {
+    background-image : url("normal.jpg");
+    background-size : cover;
+    color : white ;
+}
+
+.nav-menu {
+    display  : flex;
+/*    무시무시한 속성 */
+    justify-content : space-between;
+    padding : 15px;
+    align-items: center; 
+/*    가운데 정렬*/
+/*    여기부터 navbar만들기 위한 설정*/
+    background-color : transparent;
+/*    첨에 메뉴 탭이 투명하기 위한 조정*/
+    position : fixed;
+/*    스크롤바가 움직여도 포지션이 고정되는것을 위함 */
+    z-index : 5;
+/*    position 속성을 설정시 앞/뒤 위치를 조정해줘야함*/
+    width : 100%;
+    color : white;
+    transition : background-color 1s;
+}
+
+.list-group {
+    display : none;
+}
+
+.display-4 {
+    color : black;
+}
+
+.idnull {
+    display : none;
+}
+
+.pwnull {
+    display : none;
+}
+
+#left-menu {
+    width : 150px;
+    height : 100%;
+    background-color : lightgray;
+    color : black;
+    position : fixed;
+    margin-left : -150px;
+    opacity : 0.8;
+/*    margin-left를 마이너스로 줘서 숨기기 이후에 0px로 이동시키면 등장*/
+/*    position은 고정시키는것 스크롤해도 그자리 유지*/
+}
+
+.slide-down {
+    transform : translateY(0px);
+}
+
+.slide-box {
+    width : 100vw;
+/*    100vw는 viewport width에서 100%를 차지하게 해달라고 하는데 viewport는 큰 화면을 의미
+    */
+    float : left;
+}
+
+.slide-container {
+    width : 300vw;
+/*    여기에 300vw로 하고 자식 슬라이드에 100vw로 해서 float를 하면 100씩 나눠서 정렬이된다.
+     float는 아래 slide-box에 진행 */
+    transition : transform 1s;
+/*    왼쪽으로 하나씩 이동하는 속성*/
+}
+
+img {
+    width : 100%;
+}
+
+.page-2 {
+    transform : translateX(-100vw);
+}
+
+.page-3 {
+    transform: translateX(-200vw);
+}
+
+.page-1 {
+    transform : translateX(0vw);
+}
+
+.slide-next {
+    position : absolute; 
+/*    박스안에 붕 띄우고 싶다. 그림위에 띄우고 싶다*/
+/*    style에 position : relative해야 저거랑 연결된다.*/
+    top : 45%;
+    right: 0;
+    border-color: black;
+    opacity : 0.7;
+}
+
+.slide-before {
+    position : absolute;
+    top: 45%;
+    left : 0;
+    border-color : black;
+    opacity : 0.7;
+}
+
+.dev-black {
+    background : white;
+    color : black;
+}
+
+.large-logo {
+    font-size : 25px;
+    transition : font-size 1s;
+}
+
+
+.small-logo {
+    font-size : 20px;
+}
+
+.size-select {
+    display : block;
+}
