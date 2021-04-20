@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+</head>
+<body>
+    
+    <h4 id = 'name'>상품제목</h4>
+    <p id= 'content'>상품내용</p>
+    <div style = 'margin-bottom: 500px'></div>
+    
+    
+    <script>
+    
+    // Array object
+        var 어레이 = ['BMW', '520', 230, [1]]; //여러가지 자료형 다 가능
+        console.log(어레이[0]);
+        
+        var 오브젝트 = { brand : 'BMW', model : 320} //다른 언어의 딕셔너리와 같은듯
+        console.log(오브젝트['model'])
+        console.log(오브젝트.brand)
+    
+//        array or object내의 데이터를 꺼내 html에 넣어보쟈 == 데이터 바인딩 구현
+        $('#name').html(어레이[0]);
+        $('#content').html(오브젝트.model);
+        
+//        practice1
+        var 자료 = [ { brand : 'BMW' }, { model : 520 } ];
+        $('#content').html(자료[1].model)
+        
+    </script>
+    
+    
+</body>
+
+
+
+
+
+</html>
