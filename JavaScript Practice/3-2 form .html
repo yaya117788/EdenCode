@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+<!--      Boot스트랩은 JQuery의 미니버전 URL이 있어서 일반 버전으로 URL 수정-->
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <link href="alert%20box.css" rel ='stylesheet'>
+</head>
+<body>
+    <form class="container my-5">
+<!--
+        form을 만들고 그안에 select로 select form을 만드는것 > select는 input과 비슷 
+        select안에 option을 생성하여 안에 선택지를 추가해줌
+-->
+<!--        복사 붙여넣기 해온 코드 
+            이후 셔츠를 선택하면 사이즈까지 고르는 select form을 더 보여주기 실습-->
+      <div class="form-group">
+
+        <p>상품선택</p>
+        <select class="form-control" id="option1">
+          <option>모자</option>
+          <option>셔츠</option>
+        <option>바지</option>
+        </select>
+        <div class = 'size-select'>
+        <p class='mt-4'>사이즈 선택</p>
+            <select class="form-control" id="option2">
+<!--
+              <option>95</option>
+              <option>100</option>
+                <option>105</option>
+동적 코딩하면서 지워버림-->
+            </select>
+          </div>
+          
+      </div>
+    </form>
+    
+    
+    <script>
+//    셔츠를 선택하면 밑에 사이즈 select form이 뜨게 만든다.
+//        form 이벤트 설명 : input, change 등의 이벤트가 존재 
+//        ex> 어떤 input을 찾으면 이벤트 리스너 입력 $('어떤인풋').on('input or change',function(){})
+//        ex2> input은 안의 값이 바뀌면 바로 실행
+//            change는 안의 값이 바뀔때 실행 (change는 바꾸고 어딜 클릭해야함)
+        $('#option1').on('change',function(){
+//           if($('#option1').val() == '셔츠'){
+////               사용자가 선택한 값이 셔츠일때 보여준다.
+//              $('.size-select').show();
+//              } else {
+//                  $('.size-select').hide();
+            if($('#option1').val() == '셔츠'){
+                $('#option2').html('');
+//                템플릿을 만들고 집어넣을 수 있다. 여기서도 append를 이용해 추가가능
+                var 템플릿 = `<option>95</option>
+                        <option>100</option>
+                        <option>105</option>`;
+//                이렇게 ''안에는 공백이 있으면 안돼서 엔터없이 이어줘야 하는데 이것은 html 신문법인 ``로 해결할 수 있다.
+                $('#option2').append(템플릿);
+            }
+            if($('#option1').val() == '바지'){
+                $('#option2').html('');
+//                템플릿을 만들고 집어넣을 수 있다. 여기서도 append를 이용해 추가가능
+//                var 템플릿 = `<option>28</option>
+//                            <option>30</option>
+//                            <option>32</option>`;
+//                $('#option2').append(템플릿);
+                for (let i = 26; i <40; i+=2){
+                    var 템플릿 = `<option>${i}<option>`;
+//                    중간에 문자나 변수 넣고싶으면 ${}이렇게 하면된다.
+                    $('#option2').append(템플릿);
+                }
+//                for 문을 간략화 forEach() 사용사능 var 사이즈 = [20,23,42] 이렇게 해놓고 사이즈.forEach(function(i){}) 이런식으로 할시 사이즈 개수만큼 i가 돌아감
+            }
+              }
+        );
+//        여기까진 미리 UI를 만들어놓고 특정상황에서 보여주는 형식
+        
+//        동적 HTML을 만들기 위해 자바스크립트로 HTML을 짜서 넣기
+        
+    
+    
+    </script>
+    
+    
+</body>
+
+
+
+
+
+</html>
