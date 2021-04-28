@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    
+    
+    
+    <script>
+//        array 속 이름 확인 예제 
+    var 출석부 = ['홍민','영희','철수','재석']
+    
+    function 이름찾기(e){
+        for (i=0; i <출석부.length; i++){
+            if(출석부[i] == e){
+               console.log('있어요');
+               }
+        }
+        
+    }
+    이름찾기('철수');
+        
+//    구구단 출력하기 예제
+//    for(i = 2; i < 10; i++){
+//        for (j=1; j<10; j++){
+//            console.log(i*j)
+//        }
+//    }
+        
+
+//    목표실적 계산 프로그램 실슴
+    function 실적_계산(sil,goal){
+        var sumval = 0
+        console.log(sil.length)
+        for (let i = 0; i < sil.length; i++){
+            sumval += sil[i]
+        }
+        console.log((sil.length * goal) - sumval + goal)
+    }
+    </script>
+    
+    
+</body>
+
+
+
+
+
+</html>
