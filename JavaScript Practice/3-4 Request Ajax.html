@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+</head>
+<body>
+    
+<!-- AJAX : 서버에 데이터를 요청해서 받아오는데 새로고침 없이 받아올수 있게 만들어준다. (함수 OR 툴)-->
+<!--
+    서버 : 접속자가 요청을 하면 데이터를 갖다줌
+    여기선 GET 요청만 사용해본다.
+-->
+    <div class="card" style="width: 18rem;">
+  <img src="..." class="card-img-top" alt="...">
+  <div class="card-body">
+    <h5 class="card-title">Card title</h5>
+    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    <a href="#" class="btn btn-primary">Go somewhere</a>
+  </div>
+<!--        부트스트랩에서 가져온 card components 상품제목,설명이나 가격 이미지경로등을 받아온뒤 데이터바인딩 진행-->
+    </div>
+    <button class='btn btn-light' id = 'buttonex'>상품보여주기</button>
+    <script>
+        
+    $('#buttonex').click(function(){
+            $.ajax({ 
+    //        이안에 오브젝트 자료형을 넣으면 된다.
+            url : 'https://codingapple1.github.io/data.json',
+    //        코딩애플에서 자체적으로 만든 간단 서버 
+            type : 'GET'
+
+        }).done(function(데이터){
+    //        done은 ajax가 성공했을때 뭘 실행해주세요~ 할때 쓰는 함수다.
+    //        파라미터는 가져온 데이터를 의미한다.
+            $('.card-title').html(데이터.model);
+            $('.card-text').html(데이터.price);
+            $('.card-img-top').attr('src',데이터.img);
+//                console로 띄어서 url 확인해보는 습관이 좋다
+    });           
+                         });
+        
+//        여긴 예제 1
+//    $('#buttonex').click(function(){
+//            $.ajax({ 
+//    //        이안에 오브젝트 자료형을 넣으면 된다.
+//            url : 'https://codingapple1.github.io/hello.txt',
+//    //        코딩애플에서 자체적으로 만든 간단 서버 
+//            type : 'GET'
+//
+//        }).done(function(데이터){
+//    //        done은 ajax가 성공했을때 뭘 실행해주세요~ 할때 쓰는 함수다.
+//    //        파라미터는 가져온 데이터를 의미한다.
+//            $('#hello').html(데이터);
+//    });           
+//                         });
+//    +++ .done 이외에 .fail, .always가 있다. fail은 ajax가 실패했을때 실행할코드, always는 ajsx 요청시 항상 실행한다. (로딩중입니다 이런거에 사용)
+    </script>
+    
+    
+</body>
+
+
+
+
+
+</html>
